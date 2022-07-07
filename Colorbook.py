@@ -1,4 +1,5 @@
 from enum import Enum
+from random import randint
 from typing import List, Tuple, Union
 
 _ColorType = Union[Tuple[int, int, int], Tuple[int, int, int, int]]
@@ -14,6 +15,7 @@ class Colorbook:
         LINEAR = 2
         BINARY_TREE  = 3
         TRINARY_TREE = 4
+        RANDOM = 5
 
     def __init__(self, color_list:List[_ColorType], mode:MODE=MODE.LINEAR):
         self._colors = color_list
@@ -50,4 +52,10 @@ class Colorbook:
             pass
         elif self._mode == Colorbook.MODE.LINEAR:
             self._next = (self._next + 1) % len(self._colors)
+        elif self._mode == Colorbook.MODE.BINARY_TREE:
+            raise NotImplementedError("Binary tree mode is not yet implemented for Colorbooks.")
+        elif self._mode == Colorbook.MODE.TRINARY_TREE:
+            raise NotImplementedError("Trinary tree mode is not yet implemented for Colorbooks.")
+        elif self._mode == Colorbook.MODE.RANDOM:
+            self._next = randint(a=0, b=len(self._colors)-1)
         return ret_val
