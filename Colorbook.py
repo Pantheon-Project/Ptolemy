@@ -17,8 +17,9 @@ class Colorbook:
         TRINARY_TREE = 4
         RANDOM = 5
 
-    def __init__(self, color_list:List[_ColorType], mode:MODE=MODE.LINEAR):
+    def __init__(self, color_list:List[_ColorType], bg_color:_ColorType=(0,0,0,1), mode:MODE=MODE.LINEAR):
         self._colors = color_list
+        self._bg     = bg_color
         self._mode   = mode
         self._next   = 0
 
@@ -39,6 +40,10 @@ class Colorbook:
         :type color: _ColorType
         """
         self._colors.append(color)
+
+    @property
+    def Background(self):
+        return self._bg
 
     @property
     def Next(self):
